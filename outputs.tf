@@ -32,7 +32,7 @@ output "ecs_task_sets_load_balancer" {
 }
 output "ecs_task_sets_network_configuration" {
   description = "Map of network_configuration values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
-  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => v.network_configuration if v.network_configuration != null && length(v.network_configuration) > 0 }
+  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => one(v.network_configuration) if v.network_configuration != null && length(v.network_configuration) > 0 }
 }
 output "ecs_task_sets_platform_version" {
   description = "Map of platform_version values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
@@ -44,7 +44,7 @@ output "ecs_task_sets_region" {
 }
 output "ecs_task_sets_scale" {
   description = "Map of scale values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
-  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => v.scale if v.scale != null && length(v.scale) > 0 }
+  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => one(v.scale) if v.scale != null && length(v.scale) > 0 }
 }
 output "ecs_task_sets_service" {
   description = "Map of service values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
@@ -52,7 +52,7 @@ output "ecs_task_sets_service" {
 }
 output "ecs_task_sets_service_registries" {
   description = "Map of service_registries values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
-  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => v.service_registries if v.service_registries != null && length(v.service_registries) > 0 }
+  value       = { for k, v in aws_ecs_task_set.ecs_task_sets : k => one(v.service_registries) if v.service_registries != null && length(v.service_registries) > 0 }
 }
 output "ecs_task_sets_stability_status" {
   description = "Map of stability_status values across all ecs_task_sets, keyed the same as var.ecs_task_sets"
